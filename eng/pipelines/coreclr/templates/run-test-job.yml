@@ -178,6 +178,11 @@ jobs:
         displayName: Generate test host
 
 
+    # Generate test wrappers
+    - script: $(coreClrRepoRootDir)build-test$(scriptExt) buildtestwrappersonly $(crossgenArg) $(buildConfig) $(archType) $(crossArg) $(priorityArg) $(librariesOverrideArg)
+      displayName: Generate test wrappers
+
+
     # Crossgen framework assemblies prior to triggering readyToRun execution runs.
     - ${{ if eq(parameters.readyToRun, true) }}:
       - script: $(coreClrRepoRootDir)build-test$(scriptExt) skipmanaged skipnative $(crossgenArg) $(buildConfig) $(archType) $(crossArg) $(priorityArg) $(librariesOverrideArg)
